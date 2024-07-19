@@ -1,0 +1,18 @@
+INSERT INTO classification (name) VALUES ("Recebíveis Imobiliários");
+INSERT INTO classification (name) VALUES ("Lajes Comerciais");
+INSERT INTO classification (name) VALUES ("Fundo de Fundos");
+INSERT INTO classification (name) VALUES ("Híbrido");
+INSERT INTO classification (name) VALUES ("Incorporação");
+INSERT INTO classification (name) VALUES ("Outros");
+INSERT INTO classification (name) VALUES ("Logisticos");
+INSERT INTO classification (name) VALUES ("Agencias Bancárias");
+INSERT INTO classification (name) VALUES ("Lajes Corporativas");
+INSERT INTO classification (name) VALUES ("Incorporação Residencial");
+INSERT INTO classification (name) VALUES ("Fiagro");
+INSERT INTO classification (name) VALUES ("Educacional");
+INSERT INTO classification (name) VALUES ("Fundo de Desenvolvimento");
+INSERT INTO classification (name) VALUES ("Hospital");
+INSERT INTO classification (name) VALUES ("Imóveis Residenciais");
+INSERT INTO classification (name) VALUES ("Shoppings");
+INSERT INTO classification (name) VALUES ("Hotéis");
+INSERT INTO classification (name) VALUES ("Infra");
