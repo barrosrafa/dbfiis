@@ -17,7 +17,7 @@ CREATE TABLE detailFund(
   numQuotaHolders INT,
   ipoDate DATE,
   fundSite VARCHAR(100),
-  percentageCash DECIMAL(100),
+  percentageCash DECIMAL,
   typeManagement BOOLEAN,
   numQuotas INT,
   cnpj BIGINT,
