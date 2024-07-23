@@ -1,0 +1,97 @@
+CREATE TABLE ticker(
+  id INT NOT NULL AUTO_INCREMENT,
+  acronym VARCHAR(6) NOT NULL,
+  `fundName` VARCHAR,
+  `numQuotaHolders` INT,
+  `assetQuantities` INT,
+  `ipoDate` DATE,
+  `fundSite` VARCHAR,
+  `percentageCash` DECIMAL,
+  `typeManagement` BOOLEAN,
+  `numQuotas` INT,
+  cnpj BIGINT,
+  `hasDeadline` BOOLEAN,
+  `active` BOOLEAN,
+  classification_id INT,
+  administration_id INT,
+  manager_id INT,
+  fee_id INT,
+  `targetAudience_id` INT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE `targetAudience`
+  (id INT NOT NULL, `nameAudience` VARCHAR(50), PRIMARY KEY(id));
+
+CREATE TABLE `historicalData`(
+  id INT NOT NULL,
+  `Date` DATE,
+  `Price` DECIMAL,
+  vol DECIMAL,
+  ticker_id INT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE `Dividend`(
+  id INT NOT NULL,
+  `comDate` DATE,
+  `exDate` DATE,
+  `value` DECIMAL,
+  ticker_id INT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE fee(
+  id INT NOT NULL,
+  `managementFee` DECIMAL,
+  `AdmFee` DECIMAL,
+  `performanceFee` DECIMAL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE manager(
+  id INT NOT NULL,
+  `name` VARCHAR(100),
+  cnpj BIGINT,
+  phone INT,
+  email VARCHAR(100),
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE administration(
+  id INT NOT NULL,
+  `name` VARCHAR(100),
+  cnpj BIGINT,
+  phone INT,
+  email VARCHAR(100),
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE classification(id INT NOT NULL, `name` VARCHAR, PRIMARY KEY(id));
+
+ALTER TABLE `historicalData`
+  ADD CONSTRAINT `ticker_historicalData`
+    FOREIGN KEY (ticker_id) REFERENCES ticker (id);
+
+ALTER TABLE ticker
+  ADD CONSTRAINT classification_ticker
+    FOREIGN KEY (classification_id) REFERENCES classification (id);
+
+ALTER TABLE ticker
+  ADD CONSTRAINT administration_ticker
+    FOREIGN KEY (administration_id) REFERENCES administration (id);
+
+ALTER TABLE ticker
+  ADD CONSTRAINT manager_ticker FOREIGN KEY (manager_id) REFERENCES manager (id)
+  ;
+
+ALTER TABLE ticker
+  ADD CONSTRAINT fee_ticker FOREIGN KEY (fee_id) REFERENCES fee (id);
+
+ALTER TABLE ticker
+  ADD CONSTRAINT `targetAudience_ticker`
+    FOREIGN KEY (`targetAudience_id`) REFERENCES `targetAudience` (id);
+
+ALTER TABLE `Dividend`
+  ADD CONSTRAINT `ticker_Dividend` FOREIGN KEY (ticker_id) REFERENCES ticker (id)
+  ;
